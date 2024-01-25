@@ -26,21 +26,21 @@ Your model appears to be a complex architecture combining convolutional layers, 
    ```
 
 5. **Normalization:**
-6.  Consider adding layer normalization after the embedding layer for atom labels (`embedding_layer`).
+    Consider adding layer normalization after the embedding layer for atom labels (`embedding_layer`).
 
 7. **Concatenation:**
-8. Make sure that the concatenation of the transformer outputs and the repeated embedding vector (`concatenated_output`) is appropriate for your task. You might experiment with different ways of combining these features to see what works best for your specific problem.
+   Make sure that the concatenation of the transformer outputs and the repeated embedding vector (`concatenated_output`) is appropriate for your task. You might experiment with different ways of combining these features to see what works best for your specific problem.
 
-9. **Output Layer:**
-10. Since your task is to predict future atomic positions, using a linear activation in the output layer (`activation='linear'`) is appropriate.
+10. **Output Layer:**
+ Since your task is to predict future atomic positions, using a linear activation in the output layer (`activation='linear'`) is appropriate.
 
-11. **Model Compilation:**
-12.  Depending on your specific task and dataset, you might want to experiment with different loss functions. Mean Squared Error (`'mean_squared_error'`) is common for regression tasks, but you could also explore other loss functions depending on the characteristics of your data.
+12. **Model Compilation:**
+  Depending on your specific task and dataset, you might want to experiment with different loss functions. Mean Squared Error (`'mean_squared_error'`) is common for regression tasks, but you could also explore other loss functions depending on the characteristics of your data.
 
-13. **Metrics:**
-14.  The choice of metrics (`'accuracy'`, `'mae'`, `'RootMeanSquaredError'`) is fine for monitoring the model's performance during training, but keep in mind that accuracy might not be the most informative metric for regression tasks.
+14. **Metrics:**
+  The hoice of metrics (`'accuracy'`, `'mae'`, `'RootMeanSquaredError'`) is fine for monitoring the model's performance during training, but keep in mind that accuracy might not be the most informative metric for regression tasks.
 
-15. **Model Summary:**
-16. Your model summary looks comprehensive, and it's good that you print it to understand the architecture and check for any unexpected layer shapes.
+17. **Model Summary:**
+ Your model summary looks comprehensive, and it's good that you print it to understand the architecture and check for any unexpected layer shapes.
 
 Remember to thoroughly validate your model on a separate validation set and possibly perform hyperparameter tuning to achieve the best performance. Additionally, consider monitoring the model's performance during training using tools like TensorBoard for more detailed insights.
