@@ -20,15 +20,17 @@ Your model appears to be a complex architecture combining convolutional layers, 
 
 3. **Embedding Layer:**
 4. The embedding layer for atom labels (`input_atom_label`) seems to be applied at the end of the model. While this might work, it's more common to embed atom labels at the beginning to allow the model to learn representations based on atom types early in the network.
+- [x]
 
    ```python
    embedding_layer = Embedding(input_dim=num_atoms, output_dim=embedding_dim, input_length=1, name='embedding_layer')(input_atom_label)
    ```
 
-5. **Normalization:**
+6. **Normalization:**
     Consider adding layer normalization after the embedding layer for atom labels (`embedding_layer`).
+   - [x]
 
-7. **Concatenation:**
+8. **Concatenation:**
    Make sure that the concatenation of the transformer outputs and the repeated embedding vector (`concatenated_output`) is appropriate for your task. You might experiment with different ways of combining these features to see what works best for your specific problem.
 
 10. **Output Layer:**
