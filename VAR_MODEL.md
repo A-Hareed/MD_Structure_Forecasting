@@ -101,3 +101,69 @@ mse = mean_squared_error(test_data, forecast)
 ```
 
 Remember, tuning the model involves experimentation and validation. You should try different approaches and assess the model's performance based on your specific requirements and domain knowledge.
+
+## SVAR structure selection:
+
+To run unsupervised learning on your energy data to identify clusters, you can use techniques such as K-means clustering or Gaussian mixture models (GMMs). Here's a general approach using Python and popular machine learning libraries like scikit-learn:
+
+1. **Data Preparation**:
+   - Prepare your energy data in a suitable format. If you have multiple energy terms over time, you may need to reshape or preprocess the data as necessary.
+
+2. **Feature Selection**:
+   - If you have multiple energy terms, decide which features you want to use for clustering. You can use all energy terms or select specific ones based on your analysis goals.
+
+3. **Normalization**:
+   - Normalize your data if the energy terms are on different scales. This step ensures that all features contribute equally to the clustering process.
+
+4. **Choose the Algorithm**:
+   - Select an unsupervised learning algorithm suitable for clustering. K-means clustering and Gaussian mixture models (GMMs) are common choices for this task.
+
+5. **Model Training**:
+   - Train the chosen clustering algorithm on your energy data. Specify the number of clusters (`k` for K-means or the number of components for GMMs) based on your domain knowledge or using techniques like the elbow method or silhouette score.
+
+6. **Cluster Visualization**:
+   - Visualize the clusters in your energy data to understand their distribution and relationships. Depending on the dimensionality of your data, you may need to use dimensionality reduction techniques like PCA or t-SNE for visualization.
+
+7. **Interpretation and Analysis**:
+   - Analyze the obtained clusters to gain insights into the underlying patterns or structures in your energy data. You can examine the characteristics of each cluster and their relevance to your research questions.
+
+Here's a code example using scikit-learn to perform K-means clustering on energy data:
+
+```python
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+# Assuming energy_data is your preprocessed energy data (e.g., numpy array)
+# Perform normalization if necessary
+scaler = StandardScaler()
+energy_data_normalized = scaler.fit_transform(energy_data)
+
+# Choose the number of clusters (k)
+k = 3
+
+# Initialize KMeans model and fit to data
+kmeans = KMeans(n_clusters=k, random_state=42)
+kmeans.fit(energy_data_normalized)
+
+# Predict cluster labels
+cluster_labels = kmeans.labels_
+
+# Visualize clusters (for 2D or 3D data)
+# Example for 2D data
+plt.scatter(energy_data[:, 0], energy_data[:, 1], c=cluster_labels, cmap='viridis')
+plt.xlabel('Energy Feature 1')
+plt.ylabel('Energy Feature 2')
+plt.title('K-means Clustering')
+plt.colorbar(label='Cluster')
+plt.show()
+```
+
+In this code:
+- `energy_data` represents your preprocessed energy data.
+- The data is normalized using `StandardScaler`.
+- K-means clustering is performed with `n_clusters=k`.
+- Cluster labels are predicted using `kmeans.labels_`.
+- The clusters are visualized in a scatter plot.
+
+You can adapt this example to your specific dataset and analysis requirements. Additionally, consider experimenting with different clustering algorithms and parameters to find the most suitable approach for your data.
