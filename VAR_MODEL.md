@@ -172,3 +172,44 @@ You can adapt this example to your specific dataset and analysis requirements. A
 python martinize.py -f IgE_bent_ori.pdb -o IgE_bent_ori.top -x CG_IgE_bent_ori.pdb -dssp /usr/local/bin/dssp -p backbone -ff martini22 -ef 500 -el 0.5 -eu 0.9 -ea 0 -ep 0 -elastic -name IgE -cys 0.5 -merge A,B,C,D
 
 
+
+Certainly! Here's an example code using Gaussian Mixture Models (GMMs) for clustering your energy data:
+
+```python
+from sklearn.mixture import GaussianMixture
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+# Assuming energy_data is your preprocessed energy data (e.g., numpy array)
+# Perform normalization if necessary
+scaler = StandardScaler()
+energy_data_normalized = scaler.fit_transform(energy_data)
+
+# Choose the number of components (clusters) for GMM
+n_components = 3
+
+# Initialize GMM model and fit to data
+gmm = GaussianMixture(n_components=n_components, random_state=42)
+gmm.fit(energy_data_normalized)
+
+# Predict cluster labels
+cluster_labels = gmm.predict(energy_data_normalized)
+
+# Visualize clusters (for 2D or 3D data)
+# Example for 2D data
+plt.scatter(energy_data[:, 0], energy_data[:, 1], c=cluster_labels, cmap='viridis')
+plt.xlabel('Energy Feature 1')
+plt.ylabel('Energy Feature 2')
+plt.title('Gaussian Mixture Model Clustering')
+plt.colorbar(label='Cluster')
+plt.show()
+```
+
+In this code:
+- `energy_data` represents your preprocessed energy data.
+- The data is normalized using `StandardScaler`.
+- Gaussian Mixture Model (GMM) clustering is performed with `n_components`.
+- Cluster labels are predicted using `gmm.predict()`.
+- The clusters are visualized in a scatter plot.
+
+Just like with K-means, you can adapt this example to your specific dataset and analysis requirements. Experiment with different numbers of components (`n_components`) to find the optimal number of clusters for your data. Additionally, consider evaluating the silhouette score or other clustering metrics to assess the quality of the clusters obtained by the GMM model.
