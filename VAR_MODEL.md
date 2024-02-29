@@ -167,3 +167,8 @@ In this code:
 - The clusters are visualized in a scatter plot.
 
 You can adapt this example to your specific dataset and analysis requirements. Additionally, consider experimenting with different clustering algorithms and parameters to find the most suitable approach for your data.
+
+
+python martinize.py -f IgE_bent_ori.pdb -o IgE_bent_ori.top -x CG_IgE_bent_ori.pdb -dssp /usr/local/bin/dssp -p backbone -ff martini22 -ef 500 -el 0.5 -eu 0.9 -ea 0 -ep 0 -elastic -name IgE -cys 0.5 -merge A,B,C,D
+
+
