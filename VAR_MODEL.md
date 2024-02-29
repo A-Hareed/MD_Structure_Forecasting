@@ -213,3 +213,7 @@ In this code:
 - The clusters are visualized in a scatter plot.
 
 Just like with K-means, you can adapt this example to your specific dataset and analysis requirements. Experiment with different numbers of components (`n_components`) to find the optimal number of clusters for your data. Additionally, consider evaluating the silhouette score or other clustering metrics to assess the quality of the clusters obtained by the GMM model.
+
+
+### Sed sub
+sed 's/CLX/CLY/g' input.txt > output.txt
