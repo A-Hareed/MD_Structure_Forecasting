@@ -39,3 +39,8 @@ svm_model = MultiOutputRegressor(svr)
 
 # Train the model with your data
 # svm_model.fit(X_train, y_train)
+
+from sklearn.preprocessing import StandardScaler
+# Standardization
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(your_target_data)
